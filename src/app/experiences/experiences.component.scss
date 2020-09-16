@@ -11,13 +11,14 @@
     width: 50%;
     display: flex;
     padding: 1rem;
+    position: relative;
   }
 
   .entryBox {
     display: flex;
     flex-direction: column;
     width: 50%;
-    cursor: pointer;
+
 
       .titleBox {
         border-left-style: solid;
@@ -26,6 +27,7 @@
         padding: 1rem;
         min-height: 3rem;
         position: relative;
+        cursor: pointer;
 
         &::before {
           content: "";
@@ -48,6 +50,19 @@
           color: variables.$color-lightBlue;
           transition: color ease 0.2s;
         }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 4rem;
+        height: 20px;
+        background-color: transparent;
+        border-top-style: solid;
+        border-top-width: 3px;
+        border-color: variables.$color-darkBlue;
+        bottom: -4px;
+        left: -14px;
       }
 
   }

@@ -1,19 +1,15 @@
 @use 'src/variables';
 
-.projectsContainer {
-  display: flex;
-  flex-direction: column;
-}
+// .projectsContainer {
+//   display: flex;
+//   flex-direction: column;
+// }
 
 .projectPost {
   position: relative;
   padding: 2rem;
   width: 100%;
   height: 40rem;
-  margin-bottom: 2rem;
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: variables.$color-darkBlue;
 
   .descriptionBox {
    font-size: 20px;
@@ -69,4 +65,43 @@
     z-index: 3;
   }
 
+}
+
+@media only screen and (max-width: 768px) {
+  .projectsContainer {
+    margin: 0;
+    padding: 0;
+  }
+
+  .projectPost {
+    height: 30rem;
+    padding: 0;
+
+
+    .descriptionBox {
+      width: 10rem;
+      height: 10rem;
+      top: auto;
+      bottom: 10%;
+      left: 0;
+      z-index: 4;
+      background-color: variables.$color-yellow;
+      color: variables.$color-darkBlue;
+
+      .title {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .imageBox {
+      width: 100%;
+      height: 25rem;
+      top: 0;
+      left: 0;
+    }
+  }
 }
