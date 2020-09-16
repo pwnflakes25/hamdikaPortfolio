@@ -1,0 +1,9 @@
+<div class="projectsContainer">
+  <div class="projectPost" *ngFor='let project of projects; let i = index;'>
+     <div class="descriptionBox">
+        <p class="title">{{project.title}}</p>
+        <p>{{project.description}}</p>
+     </div>
+     <div class="imageBox" [style.background-image]="'url('+project.imageUrl+')'"></div>
+  </div>
+</div>

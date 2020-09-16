@@ -1,0 +1,41 @@
+
+<section id="introSection" [ngStyle]="{'background-color': isSwitchOn? '#FFDB6B' : '#F0F0F4'}">
+  <div class="titleBox">
+    <p>Hi I am <br><span id="portfolioName">Hamdika</span><br> and I am <span id="profession" #profession>a student</span></p>
+  </div>
+  <div class="circuit-diagram" (click)="onActive()">
+     <div class="firstLine"></div>
+     <div class="firstCircle"></div>
+     <div class="switch" [ngStyle]="{
+       'transform': isSwitchOn? 'rotate(0deg)' : 'rotate(-20deg)'
+     }"></div>
+     <div class="secondCircle"></div>
+     <div class="secondLine"></div>
+  </div>
+</section>
+
+<section id="navBoxSection">
+    <div class="navbox" id="box1">
+      About Me
+    </div>
+    <div class="navbox" id="box2">
+      My Projects
+    </div>
+    <div class="navbox" id="box3">
+      My experiences
+    </div>
+</section>
+
+<section id="projectSection">
+  <div class="heading">
+    <p>My Projects</p>
+  </div>
+  <app-projects></app-projects>
+</section>
+
+<section id="experience">
+  <div class="heading">
+   My Experiences
+  </div>
+  <app-experiences></app-experiences>
+</section>

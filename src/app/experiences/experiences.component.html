@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="content">
+    <div class="entryBox">
+      <div class="titleBox" (click)="onShowDetail(exp, i)" *ngFor="let exp of experiences; let i = index;">
+        <p [ngStyle]="{
+          'background-color': (i === selectedIndex) ? '#FFDB6B' : '#F0F0F4',
+          'color': (i === selectedIndex) ? '#403D58' : '#90A9B7'
+         }">{{exp.company}}</p>
+      </div>
+    </div>
+    <div class="detailsBox" *ngIf='expDetails as exp' >
+      <div class="textBox">
+          <p class="title">{{exp.position}} @ {{exp.company}}</p>
+          <p>{{exp.date}}</p>
+          <ul>
+            <li *ngFor='let task of exp.tasks; let i = index;' class="tasks">{{task}}</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>

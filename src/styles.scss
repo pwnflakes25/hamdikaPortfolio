@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@use "variables";
+
+body, html {
+  font-family: 'Roboto Mono', monospace;
+  background-color: variables.$color-lightGrey;
+}
