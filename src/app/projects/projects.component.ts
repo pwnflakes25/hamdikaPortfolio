@@ -1,6 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Observable} from rxjs;
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -28,10 +30,10 @@ projects: Array<any> = [
 ];
 
 isDekstop: boolean;
-breakPoint: Observable;
+breakPoint: Observable<any>;
 
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver, @Inject(PLATFORM_ID) private _platformId: Object) {
     this.breakPoint = breakpointObserver.observe([
         Breakpoints.WebLandscape,
         Breakpoints.WebPortrait
@@ -42,6 +44,8 @@ breakPoint: Observable;
   }
 
   ngAfterViewInit(): void {
+
+    //below adds alternating between project layout if its on web;
     this.breakPoint.subscribe(result => {
       if (result.matches) {
         this.isDekstop = true;
@@ -50,6 +54,50 @@ breakPoint: Observable;
         this.isDekstop = false;
         this.alternateProjectsView();
       }
+    });
+
+    if(isPlatformBrowser(this._platformId) && this.isDekstop === true) {
+      this.animateFadeLeft();
+      this.animateFadeRight();
+    }
+
+  }
+
+  animateFadeLeft() {
+      const targets = document.querySelectorAll(".toFadeInLeft");
+
+      const callback = (entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('fadeInLeft');
+            observer.unobserve(entry.target);
+          }
+        });
+      }
+
+      const observer = new IntersectionObserver(callback, {threshold: 0.75});
+
+      targets.forEach((target) => {
+        observer.observe(target);
+      });
+  }
+
+  animateFadeRight() {
+    const targets = document.querySelectorAll(".toFadeInRight");
+
+    const callback = (entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('fadeInRight');
+          observer.unobserve(entry.target);
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(callback, {threshold: 0.75});
+
+    targets.forEach((target) => {
+      observer.observe(target);
     });
   }
 

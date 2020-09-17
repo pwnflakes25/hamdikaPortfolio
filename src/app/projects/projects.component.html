@@ -4,6 +4,6 @@
         <p class="title">{{project.title}}</p>
         <p>{{project.description}}</p>
      </div>
-     <div class="imageBox" [style.background-image]="'url('+project.imageUrl+')'"></div>
+     <div class="imageBox" [ngClass]="{'toFadeInLeft': i % 2 === 0, 'toFadeInRight': i % 2 !== 0}" [style.background-image]="'url('+project.imageUrl+')'"></div>
   </div>
 </div>

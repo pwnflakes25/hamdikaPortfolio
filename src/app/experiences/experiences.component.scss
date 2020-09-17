@@ -1,7 +1,19 @@
 @use 'src/variables';
 
+.slide-up {
+  transform: translateY(-30px);
+}
+
+.centerHeading {
+ font-size: 36px;
+ color: variables.$color-darkBlue;
+ margin: 2rem 0px 2rem 0px;
+ transition: transform ease 1s;
+}
+
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -18,6 +30,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+    transition: transform ease 1s;
 
 
       .titleBox {
@@ -61,7 +74,7 @@
         border-top-style: solid;
         border-top-width: 3px;
         border-color: variables.$color-darkBlue;
-        bottom: -4px;
+        bottom: -20px;
         left: -14px;
       }
 
@@ -71,6 +84,7 @@
     width: 50%;
     padding: 1rem;
     position: relative;
+    transition: transform ease 1s;
 
     .textBox {
       position: absolute;
@@ -90,6 +104,8 @@
   }
 
 }
+
+
 
 @media only screen and (max-width: 768px) {
   .container {

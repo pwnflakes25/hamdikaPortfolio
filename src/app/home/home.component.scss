@@ -16,10 +16,7 @@
    @include heading;
  }
 
- .centerHeading {
-  @include heading;
-  margin-left: 25%;
-}
+
 
 //================================per section styles
 
@@ -186,6 +183,13 @@
 
 #projectSection {
   padding: 1rem;
+}
+
+//=================================================
+
+#experienceSection {
+  margin-top: 2rem;
+  min-height: 50vh;
 }
 
 //==================================================

@@ -1,4 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'app-experiences',
@@ -42,17 +44,41 @@ experiences = [
 selectedIndex: number = 0;
 expDetails: Object = {...this.experiences[this.selectedIndex]};
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private _platformId: Object) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
+    if(isPlatformBrowser(this._platformId)) {
+      this.isOnViewPortObserve();
+    }
   }
 
   onShowDetail(exp, index) {
    this.expDetails = {...exp};
    this.selectedIndex = index;
   }
+
+  isOnViewPortObserve() {
+  const targets = document.querySelectorAll(".slide-up-entry");
+
+  const callback = (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('slide-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(callback, {threshold: 0.75});
+
+
+    targets.forEach((target) => {
+      observer.observe(target);
+    });
+
+}
 
 }

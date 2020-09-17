@@ -5,6 +5,7 @@
 //   flex-direction: column;
 // }
 
+
 .projectPost {
   position: relative;
   padding: 2rem;
@@ -60,9 +61,23 @@
     background-repeat: no-repeat;
     background-position: center;
     border-style: solid;
+    opacity: 0;
+    transition: all ease 0.5s;
     border-width: 3px;
     border-color: variables.$color-darkBlue;
     z-index: 3;
+  }
+
+  .imageBox.fadeInLeft {
+    transform-origin: left;
+    transform: translateX(-20px);
+    opacity: 1;
+  }
+
+  .imageBox.fadeInRight {
+    transform-origin: right;
+    transform: translateX(30px);
+    opacity: 1;
   }
 
 }
