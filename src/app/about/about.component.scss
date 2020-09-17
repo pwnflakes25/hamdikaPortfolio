@@ -1,0 +1,82 @@
+@use 'src/mixins';
+@use 'src/variables';
+
+
+.actionButton {
+  @include mixins.basicBox;
+  width: auto;
+  height: 3rem;
+  font-size: 18px;
+  padding: 1rem 1.5rem 0px 1rem;
+  margin-left: 1rem;
+}
+
+.slide-up {
+  transform: translateY(-30px);
+}
+
+
+.mainBox {
+  margin: 0 auto;
+  padding: 0 auto;
+  width: 80%;
+  align-self: center;
+
+
+  .heading {
+    @include mixins.heading;
+    transition: all ease 1s;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    transition: all ease 1s;
+
+    .userInfoBox {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+        .userInfoText {
+          width: 100%;
+          p {
+            max-width: 30em;
+            line-height: 2;
+            color: variables.$color-darkBlue;
+          }
+        }
+
+        .userAction {
+          width: 100%;
+          margin-top: 2rem;
+        }
+
+    }
+
+    .profileImageBox {
+      position: relative;
+
+      .profileImage {
+        @include mixins.basicBox;
+        height: 15rem;
+        width: 15rem;
+        top: 20px;
+        left: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mainBox {
+    .content {
+      .userInfoBox {
+        width: 100%;
+      }
+      .profileImageBox {
+        width: 100%;
+      }
+    }
+  }
+}

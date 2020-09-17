@@ -25,6 +25,12 @@ isSwitchOn: boolean = false;
   }
 
   ngAfterViewInit(): void {
+    const cursor = (<any>document).querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+       // cursor.style.cssText = `left: ${e.clientX}px; top: ${e.clientY}px`;
+       cursor.style.left = `${e.clientX}px`;
+       cursor.style.top = `${e.clientY}px`;
+    })
   }
 
   onActive() {

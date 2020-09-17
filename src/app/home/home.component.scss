@@ -1,19 +1,28 @@
 @use "src/variables";
+@use "src/mixins";
 
  section {
    overflow-x: hidden;
    max-width: 100%;
+   cursor: none;
  }
 
-@mixin heading {
-  font-size: 36px;
-  margin-left: 2rem;
-  color: variables.$color-darkBlue;
-  margin-bottom: 2rem;
-}
 
- .heading {
-   @include heading;
+
+
+ .cursor {
+   position: fixed;
+   font-size: 30px;
+   font-weight: bold;
+   color: variables.$color-darkBlue;
+   top: 0;
+   left: 0;
+   transform: translate(-50%,-50%);
+   pointer-events: none;
+   width: 20px;
+   height: 20px;
+   transition: all ease 0.1s;
+   z-index: 10;
  }
 
 
@@ -59,7 +68,6 @@
     position: relative;
     height: 15rem;
     width: 20rem;
-    cursor: pointer;
 
     @mixin line {
       position: absolute;
@@ -131,31 +139,7 @@
   padding: 4rem 2rem 2rem 2rem;
 
   .navbox {
-   font-size: 24px;
-   color: variables.$color-darkBlue;
-   background-color: variables.$color-lightGrey;
-   padding: 2rem;
-   cursor: pointer;
-
-   position: relative;
-   transition: all ease-in 0.2s;
-
-    &::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      border-style: solid;
-      border-color: variables.$color-darkBlue;
-      position: absolute;
-      opacity: 0.8;
-      bottom: -10px;
-      left: -8px;
-    }
-
-    &:hover {
-      background-color: variables.$color-yellow;
-      transform: translateY(-50px);
-    }
+    @include mixins.basicBox;
   }
 
   #box1 {
@@ -178,11 +162,28 @@
   }
 
 }
+//=================================================
+
+#aboutSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
 
 //=================================================
 
 #projectSection {
   padding: 1rem;
+
+  .heading {
+    @include mixins.heading;
+    margin-left: 6rem;
+  }
 }
 
 //=================================================
@@ -203,7 +204,7 @@
   padding: 1rem;
 
   .title {
-    @include heading;
+    @include mixins.heading;
     margin: 0 auto;
   }
 

@@ -11,7 +11,9 @@
     "dev:ssr": "ng run hamdika-portfolio:serve-ssr",
     "serve:ssr": "node dist/hamdika-portfolio/server/main.js",
     "build:ssr": "ng build --prod && ng run hamdika-portfolio:server:production",
-    "prerender": "ng run hamdika-portfolio:prerender"
+    "prerender": "ng run hamdika-portfolio:prerender",
+    "start:heroku": "node dist/server",
+    "postinstall": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {

@@ -7,13 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ExperiencesComponent } from './experiences/experiences.component';
 import {LayoutModule} from '@angular/cdk/layout';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProjectsComponent,
-    ExperiencesComponent
+    ExperiencesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
